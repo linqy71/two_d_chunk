@@ -1,0 +1,6 @@
+*.sw*
+.vscode
+.DS_Store
+
+build/
+lib/
