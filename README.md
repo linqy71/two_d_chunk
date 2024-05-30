@@ -11,23 +11,17 @@ cmake ..
 sudo cmake --build . --target install
 ```
 
-build lsedb and lse_bind
+build
 
 ```
-cd lsedb
+cd two_d_chunk
 mkdir build && cd build
 cmake ..
 make
 ```
 
-export lse_bind to PYTHONPATH
+export to PYTHONPATH
 
 ```
-export PYTHONPATH=/path/to/lsedb/build:$PYTHONPATH
-```
-
-verify availability
-
-```
-python -c 'import lse_bind'
+export PYTHONPATH=/path/to/two_d_chunk/build:$PYTHONPATH
 ```
