@@ -32,9 +32,9 @@ class DB {
 
   ~DB();
 
-  void NotifyJoin(const std::vector<uint32_t>& keys, uint64_t file_number, int length);
+  void NotifyJoin(const std::vector<uint32_t>& keys, uint64_t file_number, uint64_t length);
   // void Flush();
-  void Join(const std::vector<uint32_t>& keys, uint64_t file_number, int length);
+  void Join(const std::vector<uint32_t>& keys, uint64_t file_number, uint64_t length);
 
   std::vector<CkptMetaData> GetCheckpointFiles(int version);
 
@@ -60,7 +60,7 @@ class DB {
   // delete unuseful files
   bool CleanupExtraction(Extraction* e);
 
-  void CreateFilterForMap(const std::map<int64_t, std::vector<double>>& data_map);
+  void CreateFilterForMap(const std::map<int32_t, std::vector<double>>& data_map);
 
   std::ofstream manifest_;
   std::ofstream filter_file_;

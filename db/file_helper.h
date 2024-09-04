@@ -21,21 +21,21 @@ enum Tag {
 };
 struct FileMetaData {
   uint32_t tag;
-  uint32_t start;
-  uint32_t length;
+  uint64_t start;
+  uint64_t length;
   uint32_t level;
   uint32_t column; // which node
   uint64_t number;
-  uint64_t smallest;  // Smallest key 
-  uint64_t largest;   // Largest key
+  uint32_t smallest;  // Smallest key 
+  uint32_t largest;   // Largest key
   uint64_t filter_start = 0;
   uint64_t filter_length = 0;  
 };
 
 struct CkptMetaData {
   std::string file_name;
-  uint32_t start;
-  uint32_t length;
+  uint64_t start;
+  uint64_t length;
 };
 
 bool CompareFileMetaData(FileMetaData* a, FileMetaData* b);

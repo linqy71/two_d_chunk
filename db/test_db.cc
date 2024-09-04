@@ -7,27 +7,6 @@
 using namespace tdchunk;
 
 
-// void debug() {
-//   std::ifstream file("/home/nsccgz_qylin_1/checkpoint/lsedb/testdb/emb_l.1.weight/000667.lse", std::ios::binary);
-//   if (file.is_open()) {
-//     file.seekg(124579, std::ios::beg);
-//     std::cout << file.tellg() << std::endl;
-//     char* buf = new char[18456];
-//     file.read(buf, 18456);
-//     std::cout << file.tellg() << std::endl;
-//     msgpack::object_handle oh = msgpack::unpack(buf, 18456);
-//     auto cur_file_content = oh.get();
-    
-//     std::map<uint32_t, std::vector<double>> cur_map;
-//     cur_file_content.convert(cur_map);
-//   }
-//   file.close();
-// }
-
-// int main() {
-//   debug();
-// }
-
 std::string FileName(const std::string& dbname, uint64_t number,
                                 const char* suffix) {
   char buf[100];

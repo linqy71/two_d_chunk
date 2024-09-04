@@ -34,7 +34,6 @@ FileLinkedList::FileLinkedList(std::vector<FileMetaData*>& list) {
       }
       if (file->tag == kDeletedFile) continue; //ignore
 
-      assert(file->tag != kDeletedFile);
       if (file->column != cur_column) {
         //switch to next column
         assert(file->column == (cur_column + 1) );

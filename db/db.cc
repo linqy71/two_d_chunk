@@ -77,7 +77,9 @@ bool DB::Open(const std::string& name, bool do_concat, float extract_thres) {
     std::ifstream file(manifest_name);
     file.seekg(0, std::ios::beg);
 
-    uint32_t tag, level, column, start, length;
+    uint32_t tag, level, column;
+    uint64_t start;
+    uint64_t length;
     uint64_t number;
     uint32_t smallest, largest;
     uint64_t filter_start, filter_length;
@@ -123,7 +125,7 @@ bool DB::Open(const std::string& name, bool do_concat, float extract_thres) {
   return true;
 }
 
-void DB::NotifyJoin(const std::vector<uint32_t>& keys, uint64_t file_number, int length) {
+void DB::NotifyJoin(const std::vector<uint32_t>& keys, uint64_t file_number, uint64_t length) {
   if (bg_flush && bg_flush->joinable()) {
     bg_flush->join();
   }
@@ -136,7 +138,7 @@ uint64_t DB::GetNextNumber() {
   return file_linked_list->NextFileNumber();
 }
 
-void DB::Join(const std::vector<uint32_t>& keys, uint64_t file_number, int length) {
+void DB::Join(const std::vector<uint32_t>& keys, uint64_t file_number, uint64_t length) {
   uint64_t filter_start = 0, filter_length = 0;
   if(use_filter_) {
     std::string result;
@@ -714,7 +716,7 @@ void DB::Merge(int start, int end) {
       std::stringstream buffer;
       buffer << cur_file.rdbuf();
       file.write(buffer.str().data(), buffer.str().size());
-      level_files[i]->length = (uint32_t)file.tellp() - level_files[i]->start;
+      level_files[i]->length = (uint64_t)file.tellp() - level_files[i]->start;
       level_files[i]->number = level_files[0]->number;
       // delete old file
       cur_file.close();

@@ -21,7 +21,7 @@ bool DBManager::OpenDBs(const std::vector<std::string>& db_paths, bool do_concat
 //   _dbs[index]->NotifyFlush(file_name);
 // }
 
-void DBManager::Join(int index, const std::vector<uint32_t>& keys, uint64_t file_number, int length) {
+void DBManager::Join(int index, const std::vector<uint32_t>& keys, uint64_t file_number, uint64_t length) {
   _dbs[index]->NotifyJoin(keys, file_number, length);
 }
 

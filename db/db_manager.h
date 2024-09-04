@@ -14,7 +14,7 @@ class DBManager {
 
   void Flush(int index, const std::string& file_name);
 
-  void Join(int index, const std::vector<uint32_t>& keys, uint64_t file_number, int length);
+  void Join(int index, const std::vector<uint32_t>& keys, uint64_t file_number, uint64_t length);
 
   std::vector<CkptMetaData> GetCheckpointFiles(int index, int version);
 
